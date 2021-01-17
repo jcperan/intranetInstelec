@@ -1,0 +1,363 @@
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:pm="http://primefaces.org/mobile"
+          xmlns:p="http://primefaces.org/ui">
+
+        <f:view>
+            <h:head>
+                <f:facet name="first">
+                    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                    <title>Lorca Instelec</title>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+                    <meta http-equiv="cache-control" content="max-age=0" />
+                    <meta http-equiv="cache-control" content="no-cache" />
+                    <meta http-equiv="expires" content="0" />
+                    <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                    <meta http-equiv="pragma" content="no-cache" /> 
+                </f:facet>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+                <script>
+                    WebFont.load({
+                        google: {"families": ["Lato:300,400,700,900"]},
+                        custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                        active: function () {
+                            sessionStorage.fonts = true;
+                        }
+                    });
+                </script>            
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
+
+                <f:facet name="last">
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                </f:facet>
+
+                <style>
+                    .ui-widget-content {
+                        border: 0px solid gray;
+                        background: bottom;
+                        color: gray;
+                    }
+                    .ui-datalist-data {
+                        list-style: none;
+                        padding: 0px;
+                    }
+                    .datoInformativo {
+                        font-weight: bold !important;
+                        font-size: 52px !important;
+                        color: white !important;
+                    }
+                    .titulo {
+                        font-size: 12px;
+                        color: black;
+                    }
+                    .texto {
+                        font-size: 10px;
+                    }
+                </style>    
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASp910hdK6GE2OeqQCEmmsL5bE2srrviI" type="text/javascript"></script>            
+                <script src="#{facesContext.externalContext.requestContextPath}/recursos/geolocalizacion.js" type="text/javascript"></script>            
+
+
+            </h:head>
+
+            <h:body>
+
+                <h:form id="formulario">
+
+                    <div class="wrapper">
+
+                        <div class="main-header" style="background-color: gray;">
+                            <!-- Logo Header -->
+                            <div class="logo-header">
+                                <img src="#{facesContext.externalContext.requestContextPath}/resources/instelec.png" alt="navbar brand" class="navbar-brand" style="height: 40p;width: 80px;" />
+                            </div>
+                            <!-- End Logo Header -->
+
+                            <!-- Navbar Header -->
+                            <nav class="navbar navbar-header navbar-expand-lg">
+
+                                <div class="container-fluid">
+
+                                    <div class="collapse" id="search-nav">                                    
+                                        <form id="frmBuscar" class="navbar-left navbar-form nav-search mr-md-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="submit" class="btn btn-search pr-1">
+                                                        <i class="fa fa-search search-icon"></i>
+                                                    </button>
+                                                </div>
+                                                <p:inputText size="20" maxlength="40" value="#{ControlLogin.nombreUsuario}" placeholder="Buscar ..." class="form-control" />
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <ul class="navbar-nav topbar-nav ml-md-auto ">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!-- End Navbar -->
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="sidebar sidebar-style-2" data-background-color="white" >
+                            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                                <div class="sidebar-content">
+                                    <ul id="listaClientes" data-role="listview" data-inset="true" class="nav nav-primary" >
+                                        <p:dataList value="#{ControladorIntranet.listaClientes}" var="lista" paginator="false" emptyMessage="No existen Comunidades..." 
+                                                    class="nav-item active" style="list-style: none;">
+                                            <p:commandLink actionListener="#{ControladorIntranet.botonCliente}" update="formulario:panelDatos" >
+                                                <f:facet name="id">
+                                                    <f:param value="#{lista.id}" />
+                                                </f:facet>
+                                                <div>
+                                                    <h:outputText id="lbNombre" styleClass="titulo" value="#{lista.nombre}" /><br/>
+                                                    <h:outputText styleClass="texto" value="#{lista.direccion}" /><br/>
+                                                    <h:outputText styleClass="texto" value="#{lista.cif}" />
+                                                </div>
+                                            </p:commandLink>
+                                        </p:dataList>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="main-panel">
+                            <div class="content">
+                                <div class="page-inner">
+
+                                    <p:panel id="panelDatos">
+
+                                        <div class="panel-header bg-primary-gradient">
+                                            <div class="page-inner py-5">
+                                                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                                                    <div>
+                                                        <h2 class="text-white pb-2 fw-bold">Datos del Usuario</h2>
+                                                        <h5 class="text-white op-7 mb-2">
+                                                            <p:outputLabel value="#{ControlLogin.nombreUsuario}" />
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="page-inner mt--5">
+                                            <div class="row mt--2">
+                                                <div class="col-md-6">
+                                                    <div class="card full-height">
+                                                        <div class="card-body">
+                                                            <div class="card-title">Datos de la Comunidad</div>
+                                                            <br/>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td colspan="2"><p:separator/></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p:outputLabel class="titulo" value="#{ControladorIntranet.cliente.nombre}" 
+                                                                                       style="font-weight: bold; font-size: 16px !important;"/>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p:outputLabel class="dato" value="#{ControladorIntranet.cliente.direccion}" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p:outputLabel class="dato" value="#{ControladorIntranet.cliente.codpostal}" />&nbsp;&nbsp;
+                                                                        <p:outputLabel class="dato" value="#{ControladorIntranet.cliente.poblacion}" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p:outputLabel class="dato" value="#{ControladorIntranet.cliente.provincia}" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <p:outputLabel class="dato" value="#{ControladorIntranet.cliente.cif}" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2"><p:separator/></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-6">
+                                                    <div class="card full-height">
+                                                        <div class="card-body">
+                                                            <div class="card-title">Imagen</div>
+                                                            <p:graphicImage id="imagen" value="#{ControladorIntranet.cliente.imagen}" cache="false"
+                                                                            style="width:100%;min-height: 30px;border:solid black"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                
+                                                
+                                                <div class="row col-md-12">
+                                                    <div class="col-md-12">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <div class="card-head-row card-tools-still-right">
+                                                                    <h4 class="card-title">Documentacion</h4>
+                                                                    <div class="card-tools">
+                                                                        <p:commandButton value="+" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body" style="padding-right: 0px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <p:dataList value="#{controladorClientes.listaFicheros}" id="listaFicheros"
+                                                                                    var="lista" paginator="false" emptyMessage="No existen Ficheros"  >
+                                                                            <p:commandLink onclick="window.open('#{lista.url}');return false;" >
+                                                                                <f:facet name="url">
+                                                                                    <f:param value="#{lista.url}" />
+                                                                                </f:facet>
+
+                                                                                <div class="izquierda">
+                                                                                    <h:outputText styleClass="texto" value="#{lista.nombre}" />
+                                                                                </div>
+                                                                                <br/>
+                                                                            </p:commandLink>
+                                                                        </p:dataList>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+
+
+                                                <div class="col-md-6">
+                                                    <div class="card full-height">
+                                                        <div class="card-header">
+                                                            <div class="card-head-row card-tools-still-right">
+                                                                <h4 class="card-title">Mantenimiento Preventivo</h4>
+                                                                <div class="card-tools">
+                                                                    <p:commandButton value=" Ver " />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p:dataTable value="#{ControladorPreventivo.listaPreventivo}" var="lista" paginator="false" emptyMessage="No existen Trabajos..." 
+                                                                         class="nav-item active" style="list-style: none;">
+                                                                <p:column width="90">
+                                                                    <h:outputText styleClass="texto" value="#{lista.fecha}">
+                                                                        <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                                    </h:outputText>
+                                                                </p:column>
+                                                                <p:column width="50">
+                                                                    <h:outputText styleClass="texto" value="#{lista.hora}" />
+                                                                </p:column>
+                                                                <p:column>
+                                                                    <h:outputText styleClass="texto" value="#{lista.observaciones}" />
+                                                                </p:column>
+                                                            </p:dataTable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-6">
+                                                    <div class="card full-height">
+                                                        <div class="card-header">
+                                                            <div class="card-head-row card-tools-still-right">
+                                                                <h4 class="card-title">Mantenimiento Correctivo</h4>
+                                                                <div class="card-tools">
+                                                                    <p:commandButton value=" Ver " />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p:dataTable value="#{ControladorCorrectivo.listaCorrectivo}" var="lista" paginator="false" emptyMessage="No existen Trabajos..." 
+                                                                         class="nav-item active" style="list-style: none;">
+                                                                <p:column width="90">
+                                                                    <h:outputText styleClass="texto" value="#{lista.fecha}">
+                                                                        <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                                    </h:outputText>
+                                                                </p:column>
+                                                                <p:column width="50">
+                                                                    <h:outputText styleClass="texto" value="#{lista.hora}" />
+                                                                </p:column>
+                                                                <p:column>
+                                                                    <h:outputText styleClass="texto" value="#{lista.observaciones}" />
+                                                                </p:column>
+                                                            </p:dataTable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+
+                                                <div class="row col-md-12">
+                                                    <div class="col-md-12">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <div class="card-head-row card-tools-still-right">
+                                                                    <h4 class="card-title">Geolocalizacion</h4>
+                                                                    <div class="card-tools">
+                                                                        <p:inputText id="txtLatitud"  disabled="true" size="10" value="#{ControladorContratos.objeto.clientes.latitud}" style="width:120px;" />
+                                                                        <p:inputText id="txtLongitud" disabled="true" size="10" value="#{ControladorContratos.objeto.clientes.longitud}" style="width:120px;float:right;" />
+
+                                                                        <p:commandButton value=" Ver " update="formulario:mapa" oncomplete="marcaPosicion();" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <p:gmap id="mapa" center="#{ControladorContratos.objeto.clientes.latitud},#{ControladorContratos.objeto.clientes.longitud}" 
+                                                                                navigationControl="true" widgetVar="map" streetView="false" 
+                                                                                zoom="18" type="HYBRID" style="width:100%;height:400px;" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+
+                                            </div>
+
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </h:form>
+
+            </h:body>
+
+        </f:view>
+    </html>
+
