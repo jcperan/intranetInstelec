@@ -1,88 +1,162 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:p="http://primefaces.org/ui">
 
-    <f:view>
+        <f:view>
 
-        <h:head>
-            <title>Rutas</title>
-            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <meta name="apple-mobile-web-app-capable" content="yes"/>
-            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+            <h:head>
+                <title>Representantes</title>
+                <f:facet name="first">
+                    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
-            <meta http-equiv="cache-control" content="max-age=0" />
-            <meta http-equiv="cache-control" content="no-cache" />
-            <meta http-equiv="expires" content="0" />
-            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
-            <meta http-equiv="pragma" content="no-cache" /> 
+                    <meta http-equiv="cache-control" content="max-age=0" />
+                    <meta http-equiv="cache-control" content="no-cache" />
+                    <meta http-equiv="expires" content="0" />
+                    <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                    <meta http-equiv="pragma" content="no-cache" /> 
+                </f:facet>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+                <script>
+                    WebFont.load({
+                        google: {"families": ["Lato:300,400,700,900"]},
+                        custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                        active: function () {
+                            sessionStorage.fonts = true;
+                        }
+                    });
+                </script>            
 
-            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
 
-        </h:head>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-        <h:body>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
 
-            <div class="page">
+                <f:facet name="last">
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                </f:facet>
 
-                <h:form id="formulario">
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
 
-                    <div class="header"> 
-                        <p:commandButton value="Volver" class="izquierda" action="rutasLista.xhtml" />
-                        <p:commandButton value="Grabar" class="derecha"   action="rutasLista.xhtml" actionListener="#{controladorRutas.rutasGrabar}" />
-                    </div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASp910hdK6GE2OeqQCEmmsL5bE2srrviI" type="text/javascript"></script>            
+                <script src="#{facesContext.externalContext.requestContextPath}/recursos/geolocalizacion.js" type="text/javascript"></script>            
+            </h:head>
 
-                    <div class="content">
+            <h:body id="cuerpo" class="bodymovil">
 
-                        <table width="100%">
+                <div class="page">
 
-                            <tr>
+                    <h:form id="formulario">
 
-                                <td colspan="2" valign="top">
+                        <div class="header" style="background-color: white;">
 
-                                    <table width="100%">
+                            <div class="nav-item navbar-brand">
+                                <a href="#{facesContext.externalContext.requestContextPath}/faces/contratos/tablas/rutasLista.xhtml">
+                                    <div class="nav-item navbar-brand">
+                                        <button type="button" >
+                                            <span class="" style="padding-left: 3;">
+                                                &nbsp;<i class="icon-arrow-left"></i>&nbsp;
+                                            </span>
+                                        </button>
+                                    </div>
+                                </a>
+                            </div>
 
-                                        <tr>
-                                            <td colspan="2">
-                                                <p:outputLabel value = "Denominacion de la ruta" styleClass="label" /><br/>
-                                                <p:inputText maxlength="20" value="#{controladorRutas.ruta.denominacion}"/>
-                                            </td>
-                                        </tr>
 
-                                        <tr>
-                                            <td colspan="2" height="80" valign="top">
-                                                <p:messages />
-                                            </td>
-                                        </tr>
+                            <!-- Logo Header -->
+                            <div class="nav-item navbar-brand">
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_logo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 200px;" />
+                            </div>
+                            <!-- End Logo Header -->
 
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
+                        </div>
 
-                    </div>
+                        <div class="main" id="main">
 
-                    <div class="footer">
-                        <p:commandButton value="Eliminar" actionListener="#{controladorRutas.rutasBorrar}"
-                                         action="/contratos/tablas/rutasLista.xhtml"
-                                         styleClass="derecha" >
-                            <p:confirm header="Confirmar Borrado" message="Desea borrar el dato actual ?" icon="ui-icon-alert" />
-                        </p:commandButton>
+                            <div class="content" id="contenido">
+                                
+                                <div class="page-inner tablatura">
 
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                        </p:confirmDialog>                        
-                    </div>
+                                    <div class="cuerpo" id="cuerpo">
 
-                </h:form>
+                                        <table width="100%">
 
-            </div>
-            
-        </h:body>
-        
-    </f:view>
+                                            <tr>
 
-</html>
+                                                <td colspan="2" valign="top">
+
+                                                    <table width="100%">
+
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p:outputLabel value = "Denominacion de la ruta" styleClass="label" /><br/>
+                                                                <p:inputText maxlength="20" size="40" value="#{controladorRutas.ruta.denominacion}"/>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="2" height="80" valign="top">
+                                                                <p:messages />
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+
+                                    <div class="footer card-footer text-center">
+
+                                        <ul class="footer_ul">
+                                            <li class="footer_li">
+                                                <p:commandButton class="footer_a btn-option" value="Grabar" actionListener="#{controladorRutas.rutasGrabar}"
+                                                                     action="/contratos/tablas/rutasLista.xhtml"
+                                                                     style="" >
+                                                </p:commandButton>                                            
+                                            </li>
+                                            
+                                            <li class="footer_li">
+                                                    <p:commandButton class="footer_a btn-danger" value="Eliminar" actionListener="#{controladorRutas.rutasBorrar}"
+                                                                     action="/contratos/tablas/rutasLista.xhtml"
+                                                                     style="" >
+                                                        <p:confirm header="Confirmar Borrado" message="Desea borrar el dato actual ?" icon="ui-icon-alert" />
+                                                    </p:commandButton>
+
+                                                    <p:confirmDialog class="ui-dialog-confirm" global="true" showEffect="fade" hideEffect="fade" closeOnEscape="true" responsive="true" severity="alert" appendTo="cuerpo">
+                                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no"  icon="ui-icon-close" />
+                                                    </p:confirmDialog>                        
+                                            </li>
+                                        </ul>
+
+                                    </div>                                    
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </h:form>
+                </div>
+
+
+
+            </h:body>
+
+        </f:view>
+
+    </html>

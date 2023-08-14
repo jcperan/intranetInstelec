@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -31,7 +33,7 @@
                     -webkit-background-size: cover;
                     -moz-background-size: cover;
                     -o-background-size: cover;
-                    background-size: cover;
+                    background-size: cover;                    
                 }
             </style>
 
@@ -45,6 +47,9 @@
                     }
                 });
             </script>            
+            
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+
         </h:head>
 
         <h:body>
@@ -55,75 +60,58 @@
 
                     <div class="wrapper">
 
-                        <div class="main-header" >
-                            <center>
-                                <h:outputLabel value="Control de Mantenimientos" />
-                            </center>
-                        </div>
+                        <div class="main-header content" style="background-color: white;">
 
-                        <div class="content">
-
-                            <br/><br/><br/>
                             <p:focus for="txtUSER" />
 
-                            <center>
+                            <!-- Logo Header -->
+                            <div class="logo-header">
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_nuevo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 450px;" />
+                            </div>
+                            <!-- End Logo Header -->
 
-                                <br/><br/>
+                                <div class="login">
 
-                                <div class="col-md-3">
-                                    <div class="card full-height">
-                                        <div class="card-body">
+                                    <table>
+                                        <tr class="loginTexto">
 
-                                            <div class="centro" style="width:100%;">
-                                                <br/>
-                                                <img src="#{facesContext.externalContext.requestContextPath}/resources/logo-puertaautomatica.png" />
-                                                <br/>
-                                                <table width="80%">
-                                                    <tr>
-                                                        <td colspan="2"><br/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <i class="fas fa-address-card"></i>
-                                                            Usuario                                                            
-                                                        </td>
-                                                        <td align="right">
-                                                            <p:inputText id="txtUSER" size="12" value="#{ControlLogin.USER}" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><br/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <i class="fas fa-key"></i>
-                                                            Password
-                                                        </td>
-                                                        <td align="right">
-                                                            <p:password id="txtPASS" size="12" value="#{ControlLogin.PASS}" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><br/></td>
-                                                    </tr>
-                                                </table>
+                                            <td>
+                                                <i class="fas fa-address-card"></i>
+                                                Usuario                                                      
+                                            </td>
+                                            
+                                            <td>&nbsp;</td>
 
-                                                <p:commandButton value=" Login " action="#{ControlLogin.getDestino}"  actionListener="#{ControlLogin.cmdLOGIN}" class="btn btn-success"/>
-                                            </div>
+                                            <td align="right">
+                                                <p:inputText id="txtUSER" size="12" value="#{ControlLogin.USER}" />
+                                            </td>
+                                            
+                                            <td>&nbsp;</td>
 
-                                        </div>
-                                    </div>
+                                            <td>
+                                                <i class="fas fa-key"></i>
+                                                Clave
+                                            </td>
+                                            
+                                            <td>&nbsp;</td>
+
+                                            <td align="right">
+                                                <p:password id="txtPASS" size="12" value="#{ControlLogin.PASS}" />
+                                            </td>
+
+                                            <td>&nbsp;</td>
+                                            
+                                            <td>
+                                                <p:commandButton value=" Login " action="#{ControlLogin.getDestino}"  actionListener="#{ControlLogin.cmdLOGIN}" class="btn btn-default btn-sm"/>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                    
                                 </div>
-
-                                <br/>
-                                <br/>
-
-                            </center>
-
-                            <br/>
-
+                                
                         </div>
-
+                        
                         <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                         </p:messages>

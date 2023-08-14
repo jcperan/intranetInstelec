@@ -1,0 +1,192 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 oct 2022, 8:47:51
+    Author     : jcperan
+*/
+
+.bodymovil {
+    /*max-width: 470px !important;*/
+    overflow: auto !important;
+    justify-content: center;
+}
+
+.h3 {
+    font-size: 1.1rem !important;
+    color: blue !important;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100%;
+    # float: right;
+}
+
+.header {
+    background: #fff;
+    background-color: rgb(255, 255, 255);
+    min-height: 60px;
+    width: 100%;
+    position: fixed;
+    z-index: 1001;
+    box-shadow: 0 0 5px rgba(18,23,39,.5);
+}
+
+.header2 {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #e0e0e0;
+    padding: 10px;
+    z-index: 1002;
+}
+
+.lineaTabla:hover {
+    background: #000;
+    color:#FFF;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px !important;
+    text-align: center;
+    background: #fff;
+    background-color: rgb(255, 255, 255);
+    min-height: 80px;
+    z-index: 1003;
+    box-shadow: 0 0 5px rgba(18,23,39,.5);
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer_ul {
+    flex: 1;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_li {
+    flex: 1;
+    padding: 3px;
+}
+
+.footer_a {
+    flez: 1;
+    display: block;
+    text-align: center;
+    padding: 30px;
+    background-color: #e0e0e0;
+    color: #333;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+}
+
+.botonPie {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.ui-dialog-confirm {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.main-footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    color: white;
+    box-shadow: 0 0 5px rgba(18,23,39,.5);
+}
+
+.izquierda {
+    float: left;
+}
+.derecha {
+    float: right;
+}
+
+.tablatura {
+    max-width: 1200px;
+    left: 25%;
+}
+
+.login {
+    float: right;
+    padding-right: 5px;
+    padding-top: 12px;
+}
+
+.logo_corto {
+    width: 80px !important;
+}
+
+.ui-widget-content {
+    border: 0px solid gray;
+    background: bottom;
+    color: gray;
+}
+.ui-datalist-data {
+    list-style: none;
+    padding: 0px;
+}
+.datoInformativo {
+    font-weight: bold !important;
+    font-size: 52px !important;
+    color: white !important;
+}
+.titulo {
+    font-size: 12px;
+    color: black;
+}
+.texto {
+    font-size: 10px;
+}
+
+.loginTexto {
+    font-size: 14px;
+    color: red;
+}
+
+.listaTexto {
+    font-weight: bold;
+    color: red !important;
+}
+
+.right {
+    alignment-adjust: right;
+    text-align: right;
+}
+
+
+
+.cuerpo {
+    margin-top: 130px;
+}
+
+.tabla100 {
+
+    width: 100%;
+}
+
+.input100 {
+    width: 100%;
+}
+
+
+

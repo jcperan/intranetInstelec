@@ -19,6 +19,10 @@ public class Representante implements Serializable {
 	private int id;
 
 	private String nombre;
+        
+        private boolean usuarioIntranet;
+        private String usuario;
+        private String clave;
 
     public Representante() {
     }
@@ -38,5 +42,30 @@ public class Representante implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+        
+        public boolean isUsuarioIntranet() {
+            return usuarioIntranet;
+        }
+
+        public void setUsuarioIntranet(boolean usuarioIntranet) {
+            this.usuarioIntranet = usuarioIntranet;
+        }
+
+        public String getUsuario() {
+            return usuario;
+        }
+
+        public void setUsuario(String usuario) {
+            this.usuario = usuario;
+        }
+
+        public String getClave() {
+            return clave;
+        }
+
+        public void setClave(String clave) {
+            this.clave = clave;
+        }
+        
 
 }

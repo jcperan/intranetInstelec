@@ -1,0 +1,148 @@
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:p="http://primefaces.org/ui">
+
+        <f:view>
+
+            <h:head>
+                <title>Representantes</title>
+                <f:facet name="first">
+                    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+                    <meta http-equiv="cache-control" content="max-age=0" />
+                    <meta http-equiv="cache-control" content="no-cache" />
+                    <meta http-equiv="expires" content="0" />
+                    <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                    <meta http-equiv="pragma" content="no-cache" /> 
+                </f:facet>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+                <script>
+                    WebFont.load({
+                        google: {"families": ["Lato:300,400,700,900"]},
+                        custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                        active: function () {
+                            sessionStorage.fonts = true;
+                        }
+                    });
+                </script>            
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
+
+                <f:facet name="last">
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                </f:facet>
+
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASp910hdK6GE2OeqQCEmmsL5bE2srrviI" type="text/javascript"></script>            
+                <script src="#{facesContext.externalContext.requestContextPath}/recursos/geolocalizacion.js" type="text/javascript"></script>            
+            </h:head>
+
+            <h:body class="bodymovil">
+
+                <div class="page">
+
+                    <h:form id="formulario">
+
+                        <div class="header" style="background-color: white;">
+
+                            <div class="nav-item navbar-brand">
+                                <a href="#{facesContext.externalContext.requestContextPath}/faces/contratos/opciones.xhtml">
+                                    <div class="nav-item navbar-brand">
+                                        <button type="button" >
+                                            <span class="" style="padding-left: 3;">
+                                                &nbsp;<i class="icon-arrow-left"></i>&nbsp;
+                                            </span>
+                                        </button>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <!-- Logo Header -->
+                            <div class="nav-item navbar-brand">
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_logo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 200px;" />
+                            </div>
+                            <!-- End Logo Header -->
+
+                            <div class="nav-item navbar-brand" style="float: right;">
+                                <p:commandButton class="btn btn-default btn-sm" value=" Nuevo " action="#{controladorRepresentante.representantesNuevo}" />
+                            </div>
+                            
+                        </div>
+
+                        <div class="main">
+
+                            <div class="content">
+                                <div class="page-inner tablatura">
+
+                                    <div class="cuerpo">
+
+                                        <table width="100%">
+
+                                            <tr>
+
+                                                <td valign="top">
+
+                                                    <table width="100%">
+
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <ul id="lista" data-role="listview" data-inset="true">
+                                                                    <p:dataList value="#{controladorRepresentante.listaRepresentantes}" var="lista" 
+                                                                                emptyMessage="No existen registros" >
+                                                                        <p:commandLink actionListener="#{controladorRepresentante.representantesEditar}"
+                                                                                       class="list-group-item list-group-item-action" 
+                                                                                       action="representantesDatos.xhtml">
+                                                                            <f:facet name="id">
+                                                                                <f:param value="#{lista.id}" />
+                                                                            </f:facet>
+
+                                                                            <p:outputLabel value="#{lista.nombre}" />
+                                                                        </p:commandLink>
+                                                                    </p:dataList>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="2" height="80" valign="top">
+                                                                <p:messages />
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </h:form>
+
+                </div>
+
+            </h:body>
+        </f:view>
+
+    </html>

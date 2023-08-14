@@ -169,13 +169,18 @@ public class ControladorVisitas implements Serializable {
         Contratos objeto = controladorContratos.getObjeto();
         objeto.LeerVisita(visita.getId());
         objeto.LeerCliente(visita.getClientes().getId());
-        boolean swMantenimiento = false;
+        boolean swMantenimiento = true;
         
         GenerarImagen generador = new GenerarImagen();
         byte[] imagen = generador.ImagenJson(visita.getFirma());
 
         GenerarJustificante informe = new GenerarJustificante();
         informe.GeneraInforme(visita.getId(), imagen);
+
+        if (swMantenimiento) 
+        {
+            informe.GeneraMantenimiento(visita.getId(), imagen);
+        }
 
         String destino;
         EnviarCorreo mensaje = new EnviarCorreo("instelec@puertaautomatica.es", objeto, swMantenimiento);

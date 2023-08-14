@@ -20,16 +20,17 @@
   @extend %form-control-lg-style;
 }
 
-.input-group-lg > {
+.input-group-lg {
   .form-control {
     @extend %form-control-lg-style;
   }
-  .input-group-append > {
+
+.input-group-append {
     .btn, .input-group-text {
       @extend %form-control-lg-style;
     }
   }
-  .input-group-prepend > {
+  .input-group-prepend {
     .btn, .input-group-text {
       @extend %form-control-lg-style;
     }
@@ -46,16 +47,16 @@
   @extend %form-control-sm-style;
 }
 
-.input-group-sm > {
+.input-group-sm {
   .form-control {
     @extend %form-control-sm-style;
   }
-  .input-group-append > {
+  .input-group-append {
     .btn, .input-group-text {
       @extend %form-control-sm-style;
     }
   }
-  .input-group-prepend > {
+  .input-group-prepend {
     .btn, .input-group-text {
       @extend %form-control-sm-style;
     }

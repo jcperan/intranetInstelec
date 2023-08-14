@@ -28,7 +28,7 @@ import javax.persistence.Query;
  *
  * @author jcperan
  */
-@ManagedBean
+@ManagedBean(name = "controladorUsuarios")
 @SessionScoped
 public class ControladorUsuarios implements Serializable {
 

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:p="http://primefaces.org/ui">
+
+        <f:view>
+            <h:head>
+                <f:facet name="first">
+                    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                    <title>Lorca Instelec</title>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+                    <meta http-equiv="cache-control" content="max-age=0" />
+                    <meta http-equiv="cache-control" content="no-cache" />
+                    <meta http-equiv="expires" content="0" />
+                    <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                    <meta http-equiv="pragma" content="no-cache" /> 
+                </f:facet>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+                <script>
+                    WebFont.load({
+                        google: {"families": ["Lato:300,400,700,900"]},
+                        custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                        active: function () {
+                            sessionStorage.fonts = true;
+                        }
+                    });
+                </script>            
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
+
+                <f:facet name="last">
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                </f:facet>
+
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASp910hdK6GE2OeqQCEmmsL5bE2srrviI" type="text/javascript"></script>            
+                <script src="#{facesContext.externalContext.requestContextPath}/recursos/geolocalizacion.js" type="text/javascript"></script>            
+
+
+            </h:head>
+
+            <h:body>
+
+                <h:form id="formulario">
+
+                    <div class="wrapper">
+
+                        <div class="main-header" style="background-color: white;">
+
+                            <div class="nav-item navbar-brand">
+                                <a href="#{facesContext.externalContext.requestContextPath}/faces/mantenimientos/listaMantenimientos.xhtml">
+                                    <div class="nav-item navbar-brand">
+                                        <button class="navbar-toggler sidenav-toggler" type="button" >
+                                            <span class="navbar-toggler-icon" style="padding-left: 3;">
+                                                &nbsp;<i class="icon-arrow-left"></i>&nbsp;
+                                            </span>
+                                        </button>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <!-- Logo Header -->
+                            <div class="nav-item navbar-brand">
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_logo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 200px;" />
+                            </div>
+                            <!-- End Logo Header -->
+
+                        </div>
+
+                        <div class="main-panel">
+                            <div class="content">
+                                <div class="page-inner tablatura">
+
+                                    <div class="mt-2 mb-4">
+                                        <h5 class="text-gray op-7 mb-4">Verifica los procesos realizados.</h5>
+                                    </div>
+
+
+                                    <p:panel id="panelDatos">
+
+                                        <h:outputText value="#{controladorMantenimientos.mantenimiento.mantenimiento.denominacion}" styleClass="selector"  ></h:outputText>
+                                        <br/>
+                                        <h:outputText value="#{controladorMantenimientos.mantenimiento.mantenimiento.observaciones}" styleClass="links" />
+
+                                        <p:dataList value="#{ControladorContratos.listaDatos}"
+                                                    var="lista" id="lstCONSULTA" >
+
+                                            <table width="100%" class="listaTabla">
+                                                <tr class="lineaTabla">
+                                                    <td>
+                                                        <h:outputText value="#{lista.grupo}" styleClass="h3" /> 
+                                                    </td>
+                                                    <td>
+                                                        <h:outputText value="#{lista.datos}" styleClass="listaTabla" /> 
+                                                    </td>
+                                                    <td align="right" style="padding-top: 8px; padding-right: 12px;">
+                                                        <p:selectBooleanCheckbox 
+                                                            value="#{lista.valor}" rendered="#{lista.verlo}" class="derecha listaTabla"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </p:dataList>
+
+                                    </p:panel>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="main-footer" style="background-color: white;">
+                            <p:commandButton value="Cancelar" class="izquierda">
+
+                            </p:commandButton>
+
+                            <p:commandButton value="Aceptar" class="derecha" action="#{ControladorContratos.cmdAceptaMantenimiento}">
+
+                            </p:commandButton>
+                        </div>                        
+
+                    </div>
+                </h:form>
+            </h:body>
+        </f:view>
+    </html>

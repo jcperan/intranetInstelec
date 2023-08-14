@@ -185,7 +185,7 @@ public class Visitas implements Serializable {
     public void setIdAviso(Integer idAviso) {
         this.idAviso = idAviso;
     }
-
+    
     public boolean isPendiente() {
         return pendiente;
     }

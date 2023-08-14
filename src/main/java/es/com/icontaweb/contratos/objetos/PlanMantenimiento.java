@@ -29,7 +29,7 @@ public class PlanMantenimiento {
     /**
      * *******************************************************************************************
      * Objetos de la Persistencia de Datos
-	 ********************************************************************************************
+     * *******************************************************************************************
      */
     @PersistenceUnit
     protected EntityManagerFactory emf;
@@ -39,7 +39,7 @@ public class PlanMantenimiento {
 
     public EntityManager entityManager() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("iContratos");
+            emf = Persistence.createEntityManagerFactory("contratos");
         }
         return emf.createEntityManager();
     }
@@ -47,7 +47,7 @@ public class PlanMantenimiento {
     /**
      * *******************************************************************************************
      * Clase del mantenimiento actual
-	 ********************************************************************************************
+     * *******************************************************************************************
      */
     private Mantenimiento mantenimiento = new Mantenimiento();
 
@@ -120,7 +120,7 @@ public class PlanMantenimiento {
     /**
      * *******************************************************************************************
      * Lista de Consulta de Grupos
-	 ********************************************************************************************
+     * *******************************************************************************************
      */
     private List<MantenimientosGrupo> consultaGrupo = new ArrayList<MantenimientosGrupo>();
 
@@ -231,7 +231,7 @@ public class PlanMantenimiento {
     /**
      * *******************************************************************************************
      * Lista de Consulta de Detalles
-	 ********************************************************************************************
+     * *******************************************************************************************
      */
     private List<MantenimientosDetalle> consultaDetalle = new ArrayList<MantenimientosDetalle>();
 
@@ -349,7 +349,7 @@ public class PlanMantenimiento {
     /**
      * *******************************************************************************************
      * Lista de Consulta de Mantenimientos
-	 ********************************************************************************************
+     * *******************************************************************************************
      */
     private List<Mantenimiento> consultaMantenimientos = new ArrayList<Mantenimiento>();
 

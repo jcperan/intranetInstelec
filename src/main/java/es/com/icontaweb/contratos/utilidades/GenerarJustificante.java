@@ -14,7 +14,9 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 
-import com.mysql.jdbc.Connection;
+// import com.mysql.cj.jdbc.Driver;
+import com.mysql.jdbc.Driver;
+import java.sql.Connection;
 
 public class GenerarJustificante {
 
@@ -37,8 +39,9 @@ public class GenerarJustificante {
             parametros.put("bidiurl", realPath + "/informes/bidi-url.jpg");
             parametros.put("justificante", numero);
 
+            // Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/contratos", "usuario", "icontaweb");
+            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://185.209.60.153:3306/contratos", "usuario", "icontaweb");
 
             JasperReport jasperReport = JasperCompileManager.compileReport(realPath + "/informes/justificante.jrxml");
             jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, conexion);
@@ -65,7 +68,7 @@ public class GenerarJustificante {
             parametros.put("justificante", numero);
 
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/contratos", "usuario", "icontaweb");
+            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://185.209.60.153:3306/contratos", "usuario", "icontaweb");
 
             JasperReport jasperReport = JasperCompileManager.compileReport(realPath + "/informes/mantenimiento.jrxml");
             jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, conexion);

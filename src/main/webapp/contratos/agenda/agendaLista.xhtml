@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:pm="http://primefaces.org/mobile"
       xmlns:p="http://primefaces.org/ui">
 
     <f:view>
@@ -41,7 +40,7 @@
                                         <h:outputLabel value=" Pendientes" for="checkPendientes" /><br/>
                                         <p:inputSwitch id="checkPendientes" value="#{controladorAgenda.statusAgenda}" 
                                                        valueChangeListener="#{controladorAgenda.ObtenerAgenda}" 
-                                                       style="width:30px;" >
+                                                       style="width:30px;" disabled="#{!ControlLogin.nivelAdministrador}"  >
                                             <p:ajax event="change" update="formulario" />
                                         </p:inputSwitch>
                                     </td>

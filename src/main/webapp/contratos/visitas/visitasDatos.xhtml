@@ -45,7 +45,7 @@
                         <table width="100%">
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <ul>
                                         <li>
                                             <table>
@@ -91,6 +91,9 @@
 
                             <tr>
                                 <td>
+                                    
+                                </td>
+                                <td>
                                     <p:outputLabel value = "FECHA" class="label" /><br/>
                                     <p:calendar value="#{ControladorContratos.fecha}" pattern="dd-MM-yyyy" />
                                 </td>
@@ -101,7 +104,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <h:outputText value = "MOTIVO" styleClass="label" /><br/>
                                     <p:selectOneMenu value="#{ControladorContratos.motivo}" 
                                                      style="width:90%;" 
@@ -112,7 +115,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO" styleClass="label" /><br/>
                                     <p:selectOneMenu value="#{ControladorContratos.trabajo}" 
                                                      style="width:90%;" >
@@ -122,10 +125,16 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
+                                <td>
+                                    <p:commandButton value="Mantenimiento" class="izquierda" 
+                                         icon="icono-grabar" iconPos="left"
+                                         action="/mantenimientos/listaMantenimientos.xhtml">
+                                    </p:commandButton>
+                                </td>
                                 <td>
                                     <p:panel rendered="#{ControlLogin.nivelAdministrador}">
                                         <p:outputLabel value="En Mantenimiento" for="checkMantenimiento" /><br/>
@@ -144,21 +153,21 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
-                            
+
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:panel rendered="#{ControlLogin.nivelAdministrador}">
                                         <p:selectOneMenu id="liena1" value="#{ControladorContratos.linea1}" style="width:90%">
-                                                    <f:selectItem itemLabel="" itemValue="" />
-                                                    <f:selectItem itemLabel="Su puerta automatica no cumple normativa de seguridad" itemValue="Su puerta automatica no cumple normativa de seguridad" />
+                                            <f:selectItem itemLabel="" itemValue="" />
+                                            <f:selectItem itemLabel="Su puerta automatica no cumple normativa de seguridad" itemValue="Su puerta automatica no cumple normativa de seguridad" />
                                         </p:selectOneMenu>
                                         <br/><br/><br/>
                                         <p:selectOneMenu id="linea2" value="#{ControladorContratos.linea2}" style="width:90%">
-                                                    <f:selectItem itemLabel="" itemValue="" />
-                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" itemValue="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" />
-                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE 85121:2018" itemValue="Carece de registro de mantenimiento segun UNE 85121:2018" />
+                                            <f:selectItem itemLabel="" itemValue="" />
+                                            <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" itemValue="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" />
+                                            <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE 85121:2018" itemValue="Carece de registro de mantenimiento segun UNE 85121:2018" />
                                         </p:selectOneMenu>
                                     </p:panel>
                                 </td>
@@ -169,7 +178,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "DESCRIPCION DEL AVISO" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      readonly="#{!ControlLogin.nivelAdministrador}" 
@@ -178,7 +187,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION OPERARIO" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      value="#{ControladorContratos.descripcionOperario}"/>
@@ -186,7 +195,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION CLIENTE" 
                                                    rendered="#{ControlLogin.nivelAdministrador}" 
                                                    styleClass="label" /><br/>
@@ -197,7 +206,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2" height="80" valign="top">
+                                <td colspan="3" height="80" valign="top">
                                     <p:messages />
                                 </td>
                             </tr>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lorca Instelec</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+                <meta http-equiv="cache-control" content="max-age=0" />
+                <meta http-equiv="cache-control" content="no-cache" />
+                <meta http-equiv="expires" content="0" />
+                <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                <meta http-equiv="pragma" content="no-cache" /> 
+            </f:facet>
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+            <script>
+                WebFont.load({
+                    google: {"families": ["Lato:300,400,700,900"]},
+                    custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                    active: function () {
+                        sessionStorage.fonts = true;
+                    }
+                });
+            </script>            
+
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
+
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
+
+            <f:facet name="last">
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+            </f:facet>
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+
+            <script type="text/javascript">
+                PrimeFaces.locales['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    millisecondText: 'Milisegundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día',
+                    today: 'Hoy',
+                    clear: 'Claro'
+                };
+            </script>
+
+            <script type="text/javascript">
+                //<![CDATA[
+                function dateTemplateFunc(date) {
+                    return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;display: flex;align-items: center;justify-content: center;">' + date.day + '</span>';
+                }
+
+                //]]>
+            </script>
+            <script type="text/javascript" src="/javax.faces.resource/datepicker/datepicker.js.jsf?ln=primefaces&amp;v=7.0"/>
+
+
+        </h:head>
+
+        <h:body>
+
+            <h:form id="formulario">
+
+                <div class="wrapper">
+
+                        <div class="main-header" style="background-color: white;">
+                            <!-- Logo Header -->
+                            <div class="logo-header">
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_logo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 200px;" />
+                            </div>
+                            <!-- End Logo Header -->
+
+                        <!-- Navbar Header -->
+                        <nav class="navbar navbar-header navbar-expand-lg">
+
+                            <div class="container-fluid">
+
+                                <div class="collapse" id="search-nav">                                    
+                                    <p:outputLabel value="#{ControlLogin.nombreUsuario}" class="form-control" />
+                                </div>
+
+                                <ul class="navbar-nav topbar-nav ml-md-auto ">
+                                </ul>
+                            </div>
+
+                            <div class="nav-item navbar-brand">
+                                <p:commandButton class="btn btn-default btn-sm" value=" Volver " action="datosComunidades.xhtml" />
+                            </div>
+
+                        </nav>
+                        <!-- End Navbar -->
+
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar sidebar-style-2" data-background-color="white" >
+                        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                            <div class="sidebar-content">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-panel">
+                        <div class="content">
+                            <div class="page-inner tablatura">
+
+                                <p:panel>
+                                    <table width="100%">
+                                        <tr>
+                                            <td>
+                                                Desde Fecha<br/>
+                                                <p:inputText id="desde" value="#{ControladorPreventivo.fechaDesde}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                </p:inputText>                                                    
+                                            </td>
+                                            <td>
+                                                Hasta fecha<br/>
+                                                <p:inputText id="hasta" value="#{ControladorPreventivo.fechaHasta}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                </p:inputText>
+                                            </td>
+                                            <td>
+                                                Referencia<br/>
+                                                <p:inputText size="20" />
+                                            </td>
+                                            <td>
+                                                <p:commandButton class="btn btn-primary" value=" Buscar " update="datosConsulta" action="#{ControladorPreventivo.Buscar}" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </p:panel>
+
+                                <p:separator/>
+
+                                <p:panel id="datosConsulta">
+                                    <div class="col-md-12">
+                                        <div class="card full-height">
+                                            <div class="card-header">
+                                                <div class="card-head-row card-tools-still-right">
+                                                    <h4 class="card-title listaTexto">Mantenimiento Preventivo</h4>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p:dataTable value="#{ControladorPreventivo.datosPreventivo}" var="lista" paginator="false" emptyMessage="No existen Trabajos..." 
+                                                             class="nav-item active" style="list-style: none;">
+                                                    <p:column width="90" headerText="Fecha">
+                                                        <h:outputText styleClass="texto" value="#{lista.fecha}">
+                                                            <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column width="60" headerText="Hora">
+                                                        <h:outputText styleClass="texto" value="#{lista.hora}" />
+                                                    </p:column>
+                                                    <p:column width="180" headerText="Aviso de">
+                                                        <h:outputText styleClass="texto" value="#{lista.avisos.avisoDe}" />
+                                                    </p:column>
+                                                    <p:column width="180" headerText="Referencia">
+                                                        <h:outputText styleClass="texto" value="#{lista.avisos.referencia}" />
+                                                    </p:column>
+                                                    <p:column headerText="Descripción">
+                                                        <h:outputText styleClass="texto" value="#{lista.observaciones}" />
+                                                    </p:column>
+                                                </p:dataTable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:panel>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </h:form>
+        </h:body>
+
+    </f:view>
+</html>
+

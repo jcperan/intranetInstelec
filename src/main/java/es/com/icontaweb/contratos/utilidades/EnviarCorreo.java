@@ -19,6 +19,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletContext;
 
 import es.com.icontaweb.contratos.objetos.Contratos;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,6 +69,44 @@ public class EnviarCorreo {
 
             // Se compone la parte del texto
             BodyPart texto = new MimeBodyPart();
+            
+            String TextoMensaje = "<html> "
+                                + "     <head> "
+                                + "         <meta charset='ISO-8859-1'>"
+                                + "         <meta name='viewport' content='width=device-width, initial-scale=1.0'> "
+                                + "         <style type='text/css'> "
+                                + "             body {font-family: Arial, sans-serif;font-size: 16px;line-height: 1.5;color: #333; background-color: #ffffff; } "
+                                + "             h1   {font-size: 20px;color: #006699;margin-top: 0;margin-bottom: 20px;} "
+                                + "             h2   {font-size: 14px;color: #006699;margin-top: 20px;margin-bottom: 10px;} "
+                                + "             h3   {font-size: 18px;color: #996600;margin-left: 30px;} "
+                                + "             h4   {font-size: 12px;color: #669966;margin-left: 12px;margin-top: 0px; margin-bottom: 0px;} "
+                                + "             p    {margin-left: 30px; margin-bottom: 20px;} "
+                                + "         </style> "
+                                + "     </head> "
+                                + "     <body> "
+                                + "         <h1>Descripción de Visita Realizada</h1> "
+                                + "         <h3>" + objeto.getVisitas().getClientes().getNombre() + "</h2>"
+                                + "         <h3>"  + objeto.getVisitas().getSp() + "</h3><br/>"
+                                + "         <br/><br/>"
+                                + "         <h1>Detalles del trabajo</h1> "
+                                + "         <p>      En el dia " + new SimpleDateFormat("dd-MM-yyyy").format(objeto.getVisitas().getFecha()) + " hemos realizado una visita a su instalacion por </p>"
+                                + "         <p>" + objeto.getVisitas().getMotivos().getMotivo() + "</p>"
+                                + "         <p>con el siguiente trabajo</p>"
+                                + "         <p>" + objeto.getVisitas().getTrabajos().getTrabajo()  + "</p>"
+                                + "         <p>" + aviso + "</p>"
+                                + "         <h2>Descripcion del trabajo Realizado</h2>" 
+                                + "         <p> " + objeto.getVisitas().getObservaciones() + "</p>"
+                                + "         Reciba un cordial saludo...<br/><br/>"
+                                + "         <img src=\"cid:image\">"
+                                + "         <br/>http://www.puertaautomatica.es<br/><br/>"
+                                + "         <h4>AVISO DE CONFIDENCIALIDAD. La información incluida en este email, así como los posibles archivos adjuntos al mismo, son CONFIDENCIALES. Siendo para uso exclusivo de su destinatario. Si usted recibe este email y no es su destinatario, notifíquenos este hecho y elimine este mensaje de su sistema. Queda prohibida la copia, difusión o revelación de su contenido a terceros sin la debida autorización de Lorca INSTELEC S.L. En caso contrario vulnerará la legislación vigente.</h4>"
+                                + "         <h4>PROTECCION DE DATOS. Sus datos personales, incluido su email, están incluidos en un fichero titularidad de Lorca INSTELEC S.L. cuya finalidad es la de mantener el contacto con Vd., quien podrá ejercer sus derechos de acceso, rectificación, cancelación u oposición mediante envio  a: ( www.puertaautomatica.es/contacto ), con el objeto de que el citado error no vuelva a producirse. Gracias.</h4><br/><br/>"
+                                + "         <h4>Por favor, antes de imprimir piense si lo necesita.<h4><br/>"
+                                + "         </body>"
+                                + "</html>";
+
+
+/**            
             String TextoMensaje = (new Date()).toString() + "<br/><br/>"
                     + "                    <strong>" + objeto.getVisitas().getClientes().getNombre() + "</strong><br/><br/>"
                     + objeto.getVisitas().getSp() + "<br/>"
@@ -85,8 +124,10 @@ public class EnviarCorreo {
                     + "<br/><br/>"
                     + "PROTECCION DE DATOS. Sus datos personales, incluido su email, están incluidos en un fichero titularidad de Lorca INSTELEC S.L. cuya finalidad es la de mantener el contacto con Vd., quien podrá ejercer sus derechos de acceso, rectificación, cancelación u oposición mediante envio  a: ( www.puertaautomatica.es/contacto ), con el objeto de que el citado error no vuelva a producirse. Gracias.<br/><br/>"
                     + "Por favor, antes de imprimir piense si lo necesita.<br/>";
+**/
 
-            TextoMensaje = new String(TextoMensaje.getBytes("ISO-8859-15"));
+            
+            TextoMensaje = new String(TextoMensaje.getBytes("ISO-8859-1"));
             texto.setContent(TextoMensaje, "text/html");
 
             // Se compone el adjunto con la imagen
@@ -146,7 +187,7 @@ public class EnviarCorreo {
             t.close();
             
             // Eliminar arhivo pdf 
-            if (spname != "") {
+            if (!spname.equals("")) {
                 Path file2 = FileSystems.getDefault().getPath(realPath + "/informes/" + spname + ".pdf");
                 Files.delete(file2);
             }

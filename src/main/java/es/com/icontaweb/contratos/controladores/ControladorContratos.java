@@ -22,6 +22,7 @@ import es.com.icontaweb.contratos.utilidades.EnviarCorreo;
 import es.com.icontaweb.contratos.utilidades.GenerarImagen;
 import es.com.icontaweb.contratos.utilidades.GenerarJustificante;
 import es.com.icontaweb.controladores.ControlLogin;
+import es.com.icontaweb.contratos.controladores.ControladorMantenimientos;
 import es.com.icontaweb.rutinas.Rutinas;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -46,6 +47,10 @@ public class ControladorContratos implements Serializable {
     private Contratos objeto = new Contratos();
     public void setObjeto(Contratos objeto) { this.objeto = objeto; }
     public Contratos getObjeto() { return objeto; }
+    
+    private ControladorMantenimientos controladorMantenimiento = new ControladorMantenimientos();
+    public void setMantenimiento(ControladorMantenimientos controladorMantenimiento) { this.controladorMantenimiento = controladorMantenimiento; }
+    public ControladorMantenimientos getMantenimiento() { return controladorMantenimiento; }
     
     
     private String cmdVolver = "";
@@ -352,6 +357,12 @@ public class ControladorContratos implements Serializable {
             objeto.getAvisos().setEstado("1");
             objeto.ActualizarAviso(idAviso);
         }
+        
+        if (swMantenimiento) 
+        {
+            this.GeneraMantenimiento(objeto.getVisitas().getId());
+        }
+
         
         descripcion = "";
         sp = "";
@@ -832,7 +843,7 @@ public class ControladorContratos implements Serializable {
 
     public String cmdAceptaMantenimiento() {
         swMantenimiento = true;
-        return "confirma";
+        return "confirmaMantenimiento";
     }
 
 }

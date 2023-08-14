@@ -84,6 +84,7 @@ public class ControladorClientes implements Serializable {
         byte[] bytes = null;
         if (null != uploadedPhoto) {
             bytes = uploadedPhoto.getContents();
+            // bytes = uploadedPhoto.getContent();
             this.controladorContratos.getObjeto().getClientes().setFoto(bytes);
             this.controladorContratos.cmdGrabaCliente(null);
         }

@@ -1,9 +1,9 @@
 package es.com.icontaweb.contratos.modelos;
 
-import java.awt.Color;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * The persistent class for the avisos database table.
@@ -37,7 +37,7 @@ public class Avisos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idMotivo")
     private Motivos motivo;
-    
+
     private String usuario;
     private int prioridad;
     

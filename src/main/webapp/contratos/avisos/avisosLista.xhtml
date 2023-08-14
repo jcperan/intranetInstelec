@@ -1,160 +1,221 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE HTML [
+    <!ENTITY nbsp "&#160;"> 
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:p="http://primefaces.org/ui">
 
-    <f:view>
+        <f:view>
 
-        <h:head>
-            <title>AVISOS</title>
-            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <meta name="apple-mobile-web-app-capable" content="yes"/>
-            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+            <h:head>
+                <title>Avisos</title>
+                <f:facet name="first">
+                    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="apple-mobile-web-app-capable" content="yes"/>
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
-            <meta http-equiv="cache-control" content="max-age=0" />
-            <meta http-equiv="cache-control" content="no-cache" />
-            <meta http-equiv="expires" content="0" />
-            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
-            <meta http-equiv="pragma" content="no-cache" /> 
+                    <meta http-equiv="cache-control" content="max-age=0" />
+                    <meta http-equiv="cache-control" content="no-cache" />
+                    <meta http-equiv="expires" content="0" />
+                    <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                    <meta http-equiv="pragma" content="no-cache" /> 
+                </f:facet>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/webfont/webfont.min.js"></script>
+                <script>
+                    WebFont.load({
+                        google: {"families": ["Lato:300,400,700,900"]},
+                        custom: {"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['#{facesContext.externalContext.requestContextPath}/resources/assets/css/fonts.min.css']},
+                        active: function () {
+                            sessionStorage.fonts = true;
+                        }
+                    });
+                </script>            
 
-            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/jquery.3.2.1.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/popper.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/core/bootstrap.min.js"></script>
 
-        </h:head>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-        <h:body>
+                <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/atlantis.min.js"></script>
 
-            <div class="page">
+                <f:facet name="last">
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/bootstrap.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                    <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/atlantis.min.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+                </f:facet>
 
-                <h:form id="formulario">
+                <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/intranet.css?version=#{ControlLogin.fechaActual}" type="text/css" />
 
-                    <div class="header" > 
-                        <div>
-                            <table>
-                                <tr>
-                                    <td colspan="2">
-                                        <p:commandButton value="Volver" class="izquierda" action="/contratos/opciones.xhtml" icon="icono-volver" />
-                                    </td>
-                                    <td align="right">
-                                        <h:outputLabel value="Prioridad" for="selPrioridad" /><br/>
-                                        <p:selectOneMenu id="selPrioridad" value="#{ControladorContratos.prioridad}" 
-                                                         >
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASp910hdK6GE2OeqQCEmmsL5bE2srrviI" type="text/javascript"></script>            
+                <script src="#{facesContext.externalContext.requestContextPath}/recursos/geolocalizacion.js" type="text/javascript"></script>            
+            </h:head>
+
+            <h:body class="bodymovil">
+
+                <div class="page">
+
+                    <h:form id="formulario">
+
+                        <div class="header" style="background-color: white;">
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td colspan="1">
+                                            <div class="nav-item navbar-brand">
+                                                <a href="#{facesContext.externalContext.requestContextPath}/faces/contratos/opciones.xhtml">
+                                                    <div class="nav-item navbar-brand">
+                                                        <button type="button" >
+                                                            <span class="" style="padding-left: 3;">
+                                                                &nbsp;<i class="icon-arrow-left"></i>&nbsp;
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- Logo Header -->
+                                            <div class="nav-item navbar-brand">
+                                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec_logo.png" alt="navbar brand" class="navbar-brand" style="height: 120p;width: 200px;" />
+                                            </div>
+                                            <!-- End Logo Header -->
+                                        </td>
+                                        <td align="right">
+                                            <h:outputLabel value="Prioridad" for="selPrioridad" /><br/>
+                                            <p:selectOneMenu id="selPrioridad" value="#{ControladorContratos.prioridad}" 
+                                                             >
                                                 <f:selectItem itemLabel="TODOS" itemValue="0" />
                                                 <f:selectItem itemLabel="Normal" itemValue="1" />
                                                 <f:selectItem itemLabel="Importante" itemValue="2" />
                                                 <f:selectItem itemLabel="Urgente" itemValue="3" />
                                                 <f:selectItem itemLabel="PRIORITARIO" itemValue="4" />
-                                            <p:ajax event="change" update="formulario" />
-                                        </p:selectOneMenu>                                        
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        
-                                    </td>
-                                    <td width="80%" align="right">
-                                        <p:selectOneMenu id="selUsuario" value="#{ControladorContratos.usuarioLista}" 
-                                                         disabled="#{!ControlLogin.nivelAdministrador}" >
-                                            <f:selectItems  value="#{controladorAvisos.listaUsuarios}" />
-                                            <p:ajax event="change" update="formulario" />
-                                        </p:selectOneMenu>
-                                    </td>                                    
-                                </tr>
-                                <tr>
-                                    <td width="10%" colspan="2">
-                                        <p:inputSwitch id="checkPendientes" value="#{ControladorContratos.verTodos}" 
-                                                       valueChangeListener="#{ControladorContratos.cmdBuscarAvisos}"
-                                                       disabled="#{!ControlLogin.nivelAdministrador}"
-                                                       style="width:30px;" >
-                                            <p:ajax event="change" update="formulario" />
-                                        </p:inputSwitch>
-                                    </td>
-                                    <td width="10%" align="right">
-                                        <p:selectOneMenu id="selRuta" value="#{ControladorContratos.rutaSeleccionada}"
-                                                         disabled="#{!ControlLogin.nivelAdministrador}" >
-                                            <f:selectItems  value="#{controladorAgenda.listaRutasUsuario}" />
-                                            <p:ajax event="change" update="formulario" />
-                                        </p:selectOneMenu>
-                                    </td>
-                                </tr>
-                            </table>
+                                                <p:ajax event="change" update="formulario" />
+                                            </p:selectOneMenu>                                        
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+
+                                        </td>
+                                        <td width="80%" align="right">
+                                            <p:selectOneMenu id="selUsuario" value="#{ControladorContratos.usuarioLista}" 
+                                                             disabled="#{!ControlLogin.nivelAdministrador}" >
+                                                <f:selectItems  value="#{controladorAvisos.listaUsuarios}" />
+                                                <p:ajax event="change" update="formulario" />
+                                            </p:selectOneMenu>
+                                        </td>                                    
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" colspan="2">
+                                            <p:inputSwitch id="checkPendientes" value="#{ControladorContratos.verTodos}" 
+                                                           valueChangeListener="#{ControladorContratos.cmdBuscarAvisos}"
+                                                           disabled="#{!ControlLogin.nivelAdministrador}"
+                                                           style="width:30px;" >
+                                                <p:ajax event="change" update="formulario" />
+                                            </p:inputSwitch>
+                                        </td>
+                                        <td width="10%" align="right">
+                                            <p:selectOneMenu id="selRuta" value="#{ControladorContratos.rutaSeleccionada}"
+                                                             disabled="#{!ControlLogin.nivelAdministrador}" >
+                                                <f:selectItems  value="#{controladorAgenda.listaRutasUsuario}" />
+                                                <p:ajax event="change" update="formulario" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div class="content">
+                        <div class="main">
+                            <div class="content">
+                                <div class="page-inner tablatura">
 
-                        <br/><br/><br/>
-                        <table width="100%">
-                            <tr>
-                                <td width="80%">
-                                    <p:inputText id="txtCONSULTA" value="#{ControladorContratos.datoConsulta}" />
-                                </td>
-                                <td align="right" >
-                                    <p:commandButton id="cmdBuscar" value=" Buscar " styleClass="button" ajax="false"
-                                                     actionListener="#{ControladorContratos.cmdBuscarAvisos}" >
-                                    </p:commandButton>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <ul id="listaAgenda" style="padding: 0px !important;">
-                            <p:dataList paginator="true" rows="30" 
-                                        currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords}" paginatorAlwaysVisible="true"
-                                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
-                                        value="#{ControladorContratos.avisosLista()}" var="lista">
-                                <p:commandLink actionListener="#{ControladorContratos.cmdVERAVISO}"
-                                               action="avisosNuevo.xhtml">
-                                    <f:facet name="codigo">
-                                        <f:param value="#{lista.id}" />
-                                    </f:facet>
-
-                                    <h3><h:outputText value="#{lista.cliente.nombre}" /></h3>
+                                    <br/><br/><br/>
                                     <table width="100%">
                                         <tr>
-                                            <td width="25px" valign="top">
-                                                <h:graphicImage value="/recursos/iconos/avisos.png"/>
+                                            <td width="80%">
+                                                <p:inputText id="txtCONSULTA" value="#{ControladorContratos.datoConsulta}" />
                                             </td>
-                                            <td width="5px"></td>
-                                            <td>
-                                                <div clas="izquierda">
-                                                    <h:outputText value="#{lista.fecha}" >
-                                                        <f:convertDateTime pattern="dd-MMM-yyyy" />
-                                                    </h:outputText>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="derecha">
-                                                    <h:outputText value ="#{lista.textoPrioridad}" style="color: #{lista.colorPrioridad}" />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="center">
-                                                    [<h:outputText value="#{lista.cliente.claveMantenimiento}" />]
-                                                </div>
+                                            <td align="right" >
+                                                <p:commandButton id="cmdBuscar" value=" Buscar " styleClass="button" ajax="false"
+                                                                 actionListener="#{ControladorContratos.cmdBuscarAvisos}" >
+                                                </p:commandButton>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="5">
-                                                <div class="clear">
-                                                    <p:outputLabel value="#{lista.observaciones}" style="white-space: normal !important;"/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>                                                    
-                                </p:commandLink>
-                            </p:dataList>
-                        </ul>
+                                    </table>
 
-                    </div>
+                                    <ul id="listaAgenda" style="padding: 10px !important;" data-inset="false" class="list-group">
+                                        <p:dataList paginator="true" rows="30" class=""
+                                                    currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords}" paginatorAlwaysVisible="true"
+                                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                                                    value="#{ControladorContratos.avisosLista()}" var="lista">
+                                            <p:commandLink actionListener="#{ControladorContratos.cmdVERAVISO}"
+                                                           class="list-group-item list-group-item-action" 
+                                                           action="avisosNuevo.xhtml">
+                                                <f:facet name="codigo">
+                                                    <f:param value="#{lista.id}" />
+                                                </f:facet>
 
-                </h:form>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td>
+                                                            <h3><h:outputText value="#{lista.cliente.nombre}" /></h3>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td width="25px" valign="top">
+                                                                        <h:graphicImage value="/recursos/iconos/avisos.png"/>
+                                                                    </td>
+                                                                    <td width="5px"></td>
+                                                                    <td width="98%">
+                                                                        <div clas="izquierda">
+                                                                            <h:outputText value="#{lista.fecha}" >
+                                                                                <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                                            </h:outputText>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="30px">
+                                                                        <div class="derecha">
+                                                                            <h:outputText value ="#{lista.textoPrioridad}" style="color: #{lista.colorPrioridad}" />
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="40px"></td>
+                                                                    <td width="50px">
+                                                                        <div class="derecha">
+                                                                            [<h:outputText value="#{lista.cliente.claveMantenimiento}" />]
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="5">
+                                                                        <div class="clear">
+                                                                            <p:outputLabel value="#{lista.observaciones}" style="white-space: normal !important;"/>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>                                                    
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </p:commandLink>
+                                        </p:dataList>
+                                    </ul>
 
-            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
 
-        </h:body>
+                </div>
 
-    </f:view>
+            </h:body>
 
-</html>
+        </f:view>
+
+    </html>

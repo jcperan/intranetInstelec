@@ -948,8 +948,6 @@ public class Contratos {
      * *******************************************************************************************
      * Procedimiento para obtener la cita seleccionada
      *
-     * @return
-     * *******************************************************************************************
      */
     public void cmdVERAGENDA(ActionEvent event) {
 

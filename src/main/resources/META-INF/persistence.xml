@@ -8,11 +8,14 @@
     <class>es.com.icontaweb.contratos.vistas.VistaUsuariosRutasPK</class>
     <class>es.com.icontaweb.modelos.Horario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <!-- PROPIEDADES DE LA CONEXION A LA BASE DE DATOS -->
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/contratos?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://185.209.60.153:3306/contratos?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true"/>
+      <!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/contratos?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true"/> -->
       <property name="javax.persistence.jdbc.user" value="usuario"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="icontaweb"/>
+      <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> -->
+      <property name="javax.persistence.jdbc.password" value="icontaweb"/> 
     </properties>
   </persistence-unit>
 </persistence>

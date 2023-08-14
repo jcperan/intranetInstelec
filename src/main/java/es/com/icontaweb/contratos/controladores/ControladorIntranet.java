@@ -12,7 +12,6 @@ package es.com.icontaweb.contratos.controladores;
 
 import es.com.icontaweb.contratos.modelos.Clientes;
 import es.com.icontaweb.contratos.modelos.Representante;
-import es.com.icontaweb.contratos.modelos.Visitas;
 import es.com.icontaweb.controladores.ControlLogin;
 import java.io.File;
 import java.io.IOException;
@@ -70,6 +69,17 @@ public class ControladorIntranet implements Serializable {
     private ControladorContratos controladorContratos = new ControladorContratos();
     public void setControladorContratos(ControladorContratos controladorContratos) { this.controladorContratos = controladorContratos; }    
     public ControladorContratos getControladorContratos() { return controladorContratos; }
+    
+    private String datoBuscar = "";
+
+    public String getDatoBuscar() {
+        return datoBuscar;
+    }
+
+    public void setDatoBuscar(String datoBuscar) {
+        this.datoBuscar = datoBuscar;
+    }
+    
         
     private List<Clientes> listaClientes = new ArrayList<Clientes>();
 
@@ -81,10 +91,12 @@ public class ControladorIntranet implements Serializable {
             
             int idRepresentante = getControlLogin().getLogin().getUsuarios().getIdRpresentante();
             String sqlquery  = "select c from Clientes c where c.idRepresentante = :representante ";
+                   sqlquery += "and c.nombre like :nombre ";
                    sqlquery += "and c.visible = 1 ";
                    sqlquery += "order by c.nombre";
             Query q = em.createQuery(sqlquery);
             q.setParameter("representante", idRepresentante);
+            q.setParameter("nombre", "%" + datoBuscar + "%");
             listaClientes = q.getResultList();
         } catch (Exception e) {
             System.out.println("INTRANET " + (new Date()).toString() + " " + e.getMessage());

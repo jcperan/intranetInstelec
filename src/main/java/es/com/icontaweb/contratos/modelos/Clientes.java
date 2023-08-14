@@ -274,6 +274,7 @@ public class Clientes implements Serializable {
             imagen = null;
         } else {
             imagen = new DefaultStreamedContent(new ByteArrayInputStream(foto));
+            // imagen = new DefaultStreamedContent();
         }
         return imagen;
     }
